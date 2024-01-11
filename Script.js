@@ -9,3 +9,6 @@ function checkout() {
     // Logique pour passer une commande
     // Vous devrez implémenter cette fonction en fonction de vos besoins
 }
+function toggleHeart(heartIcon) {
+    heartIcon.classList.toggle('filled');
+}

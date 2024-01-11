@@ -14,8 +14,12 @@ header {
 section {
     margin: 20px;
 }
+.product i.filled {
+    color: #e74c3c;
+}
 
 .product {
+    border-radius: 10px;
     border: 1px solid #ddd;
     padding: 10px;
     margin: 10px;
@@ -53,7 +57,36 @@ button:hover {
 #total {
     font-weight: bold;
 }
-img{
-    width: 20%;
+.product {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.product i {
+    position: absolute;
+    top: 10px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.fa-heart{
+    right: 40px;
+}
+.fa-share-alt{
+    right: 70px;
+}
+
+.product i:hover {
+    color: #4CAF50;
+}
+.fa-c{
+    right: 10px;
+}
+
+img {
+    width: 25%; /* Pour occuper toute la largeur de la div */
     height: auto;
 }
