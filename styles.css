@@ -14,39 +14,16 @@ header {
 section {
     margin: 20px;
 }
-
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.product i.filled {
+    color: #e74c3c;
 }
 
 .product {
-    position: relative;
-    border: 1px solid #ddd;
     border-radius: 10px;
+    border: 1px solid #ddd;
     padding: 10px;
     margin: 10px;
     text-align: center;
-    width: 30%; /* Utilisation d'une largeur fixe pour chaque produit */
-    box-sizing: border-box; /* Pour inclure les bordures et les rembourrages dans la largeur et la hauteur */
-}
-
-.product i {
-    position: absolute;
-    top: 10px;
-    color: #333;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.product i:hover {
-    color: #4CAF50;
-}
-
-img {
-    width: 100%;
-    height: auto;
 }
 
 button {
@@ -55,9 +32,6 @@ button {
     padding: 10px;
     border: none;
     cursor: pointer;
-    width: 80%; /* Utilisation d'une largeur fixe pour les boutons */
-    margin-top: 10px;
-    box-sizing: border-box;
 }
 
 button:hover {
@@ -83,8 +57,36 @@ button:hover {
 #total {
     font-weight: bold;
 }
+.product {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
 
-.cart-container {
-    width: 100%; /* Pour occuper toute la largeur disponible */
-    box-sizing: border-box;
+.product i {
+    position: absolute;
+    top: 10px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.fa-heart{
+    right: 40px;
+}
+.fa-share-alt{
+    right: 70px;
+}
+
+.product i:hover {
+    color: #4CAF50;
+}
+.fa-c{
+    right: 10px;
+}
+
+img {
+    width: 25%; /* Pour occuper toute la largeur de la div */
+    height: auto;
 }
