@@ -17,10 +17,23 @@ nav {
     text-align: center;
 }
 
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 10px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 section {
@@ -32,10 +45,26 @@ section {
     padding: 10px;
     margin: 10px;
     text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
 }
 
 #selected-product-section {
     background-color: #f0f0f0;
     padding: 20px;
     text-align: center;
+}
+
+#selected-product-section p {
+    font-size: 18px;
+    color: #333;
 }
