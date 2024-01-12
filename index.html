@@ -45,7 +45,57 @@
             <span class="price">$59.99</span>
             <button onclick="addToCart()">Ajouter au Panier</button>
         </div>
-
+        <!DOCTYPE html>
+        <html lang="en">
+        
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="styles.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+            <title>Acqua Color Store</title>
+        </head>
+        
+        <body>
+            <header>
+                <h1>ACQUA COLOR store</h1>
+            </header>
+        
+            <section id="products" class="flex-container">
+                <!-- Utilisation d'une classe flex-container pour aligner les produits -->
+                <!-- Chaque produit peut être représenté par un élément div avec une classe product -->
+                <div class="product">
+                    <i class="far fa-heart" title="Ajouter aux favoris" onclick="toggleHeart(this)"></i>
+                    <i class="fas fa-share-alt" title="Partager"></i>
+                    <i class="fas fa-c" title="Comparer avec d'autres produits"></i>
+                    <img src="SADA.jpg" alt="sada photo">
+                    <h2>SADA</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni qui consequatur asperiores sint dolore
+                        praesentium facilis, fugiat explicabo ratione esse.</p>
+                    <span class="price">$39.99</span>
+                    <button onclick="addToCart()">Ajouter au Panier</button>
+                </div>
+                <!-- Ajoutez d'autres produits ici -->
+        
+            </section>
+        
+            <section id="cart">
+                <!-- Utilisation d'une classe cart-container pour aligner le panier -->
+                <div class="cart-container">
+                    <h2>Panier</h2>
+                    <ul id="cart-items">
+                        <!-- Les éléments du panier seront ajoutés dynamiquement avec JavaScript -->
+                    </ul>
+                    <p>Total: <span id="total">$0.00</span></p>
+                    <button onclick="checkout()">Passer la Commande</button>
+                </div>
+            </section>
+        
+            <script src="script.js"></script>
+        </body>
+        
+        </html>
+        
         <!-- Ajoutez d'autres produits ici -->
 
     </section>
