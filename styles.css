@@ -1,92 +1,15 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em;
-}
-
-section {
+    font-family: Arial, sans-serif;
     margin: 20px;
 }
-.product i.filled {
-    color: #e74c3c;
-}
 
-.product {
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#cart {
-    float: right;
-    width: 30%;
-    border: 1px solid #ddd;
-    padding: 10px;
-}
-
-#cart-items {
-    list-style-type: none;
-    padding: 0;
-}
-
-#cart-items li {
-    margin-bottom: 10px;
-}
-
-#total {
-    font-weight: bold;
-}
-.product {
-    position: relative;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-}
-
-.product i {
-    position: absolute;
-    top: 10px;
+h1 {
     color: #333;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-.fa-heart{
-    right: 40px;
-}
-.fa-share-alt{
-    right: 70px;
 }
 
-.product i:hover {
-    color: #4CAF50;
-}
-.fa-c{
-    right: 10px;
-}
-
-img {
-    width: 25%; /* Pour occuper toute la largeur de la div */
-    height: auto;
+a {
+    color: #007BFF;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
 }
