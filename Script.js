@@ -1,51 +1,95 @@
-const products = [
-    { name: "T-shirt", price: 20, image: "image1.jpeg" },
-    { name: "Jeans", price: 40, image: "image2.jpeg" },
-    { name: "Robe", price: 35, image: "image3.jpeg" },
-    { name: "Chaussures", price: 50, image: "image4.jpeg" },
-    { name: "Casquette", price: 15, image: "image5.jpeg" },
-    { name: "Sac à dos", price: 30, image: "image6.jpeg" },
-    // Ajoutez d'autres produits ici
-];
+document.addEventListener('DOMContentLoaded', () => {
+    const board = document.getElementById('board');
+    const status = document.getElementById('status');
+    const restartBtn = document.getElementById('restartBtn');
 
-function displayProducts() {
-    const productsContainer = document.getElementById("products-container");
+    let currentPlayer = 'X';
+    let boardState = ['', '', '', '', '', '', '', '', ''];
+    let gameActive = true;
 
-    products.forEach(product => {
-        const productDiv = document.createElement("div");
-        productDiv.classList.add("product");
+    const winningConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
 
-        const productImage = document.createElement("img");
-        productImage.src = product.image;
-        productImage.alt = product.name;
+    function handleCellClick(clickedCell, clickedCellIndex) {
+        boardState[clickedCellIndex] = currentPlayer;
+        clickedCell.innerHTML = currentPlayer;
+        let gameWon = checkWin();
+        if (gameWon) {
+            status.innerHTML = `Player ${currentPlayer} wins!`;
+            gameActive = false;
+            return;
+        }
+        if (!boardState.includes('')) {
+            status.innerHTML = "It's a draw!";
+            gameActive = false;
+            return;
+        }
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        status.innerHTML = `Player ${currentPlayer}'s turn`;
+    }
 
-        const productName = document.createElement("p");
-        productName.textContent = product.name;
+    function checkWin() {
+        return winningConditions.some((winningCombo) => {
+            return winningCombo.every((index) => {
+                return boardState[index] === currentPlayer;
+            });
+        });
+    }
 
-        const productPrice = document.createElement("p");
-        productPrice.textContent = `$${product.price}`;
+    function handleCellHover(event) {
+        if (!gameActive) return;
+        const hoveredCell = event.target;
+        const hoveredCellIndex = parseInt(hoveredCell.getAttribute('data-cell-index'));
 
-        productDiv.appendChild(productImage);
-        productDiv.appendChild(productName);
-        productDiv.appendChild(productPrice);
+        if (boardState[hoveredCellIndex] !== '') return;
 
-        productsContainer.appendChild(productDiv);
+        hoveredCell.innerHTML = currentPlayer;
+    }
 
-        // Ajouter un événement de clic pour sélectionner le produit
-        productDiv.addEventListener("click", () => selectProduct(product));
+    function handleCellLeave(event) {
+        if (!gameActive) return;
+        const hoveredCell = event.target;
+        const hoveredCellIndex = parseInt(hoveredCell.getAttribute('data-cell-index'));
 
-        // Remplir la liste déroulante dans la page "achat.html"
-        const productList = document.getElementById("product-list");
-        const option = document.createElement("option");
-        option.value = product.name;
-        option.textContent = product.name;
-        productList.appendChild(option);
-    });
-}
+        if (boardState[hoveredCellIndex] !== '') return;
 
-function selectProduct(product) {
-    const selectedProduct = document.getElementById("selected-product");
-    selectedProduct.textContent = `Produit sélectionné: ${product.name} - Prix: $${product.price}`;
-}
+        hoveredCell.innerHTML = '';
+    }
 
-window.onload = displayProducts;
+    function handleRestartGame() {
+        currentPlayer = 'X';
+        boardState = ['', '', '', '', '', '', '', '', ''];
+        gameActive = true;
+        status.innerHTML = `Player ${currentPlayer}'s turn`;
+        document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = '');
+    }
+
+    function createBoard() {
+        for (let i = 0; i < 9; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.setAttribute('data-cell-index', i);
+            cell.addEventListener('click', () => {
+                if (gameActive && boardState[i] === '') {
+                    handleCellClick(cell, i);
+                }
+            });
+            cell.addEventListener('mouseover', handleCellHover);
+            cell.addEventListener('mouseleave', handleCellLeave);
+            board.appendChild(cell);
+        }
+        status.innerHTML = `Player ${currentPlayer}'s turn`;
+    }
+
+    createBoard();
+
+    restartBtn.addEventListener('click', handleRestartGame);
+});
